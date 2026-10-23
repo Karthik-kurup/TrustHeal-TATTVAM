@@ -105,3 +105,7 @@ backend/openapi.json
 *.orig
 dataset_info.json
 unseen_dataset_info.json
+
+docs
+
+CHANGELOG.md
