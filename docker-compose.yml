@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - TRUSTHEAL_DB_PATH=/data/trustheal.db
+      - TRUSTHEAL_MODELS_DIR=/models
+      - TRUSTHEAL_LOG_LEVEL=INFO
+    volumes:
+      - ./data:/data
+      - ./models:/models
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+# NOTE: Docker is provided for reproducibility.
+# For the demo, use `make dev` instead — it's faster and supports hot-reload.

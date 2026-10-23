@@ -1,0 +1,29 @@
+{
+  "name": "trustheal",
+  "version": "0.1.0",
+  "description": "Trust-aware, explainable self-healing for Kubernetes — runs entirely offline on a laptop.",
+  "private": true,
+  "scripts": {
+    "dev": "npm run backend & npm run frontend",
+    "backend": "cd backend && uvicorn app.main:create_app --factory --host 0.0.0.0 --port 8000 --reload",
+    "frontend": "cd frontend && npm run dev",
+    "install:all": "cd backend && pip install -e .[dev] && cd ../frontend && npm install",
+    "test": "cd backend && python -m pytest tests/ -v --tb=short",
+    "train": "cd backend && python -m training.generate_dataset && python -m training.train && python -m training.evaluate",
+    "build": "cd frontend && npm run build",
+    "typecheck": "cd frontend && npm run typecheck",
+    "lint": "cd frontend && npm run lint",
+    "smoke": "python scripts/smoke_check.py --base-url http://localhost:8000"
+  },
+  "keywords": [
+    "kubernetes",
+    "self-healing",
+    "trust-gate",
+    "explainable-ai",
+    "digital-twin",
+    "fastapi",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT"
+}

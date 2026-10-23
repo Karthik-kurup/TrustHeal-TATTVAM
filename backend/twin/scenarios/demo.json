@@ -1,0 +1,81 @@
+{
+  "id": "demo",
+  "name": "TrustHeal Guided Demo",
+  "description": "6-minute demo script at 10x speed. Chains 7 fault scenarios per the master plan demo script.",
+  "seed": 42,
+  "speed": 10,
+  "duration_sim_seconds": 3600,
+  "faults": [
+    {
+      "at_sim_time": 60,
+      "label": "Step 1: Steady state (no fault)",
+      "kind": null
+    },
+    {
+      "at_sim_time": 120,
+      "label": "Step 2: Memory exhaustion on checkout",
+      "kind": "memory_exhaustion",
+      "target": "checkout",
+      "intensity": 0.9,
+      "onset_shape": "sigmoid",
+      "onset_duration": 20,
+      "duration": 300
+    },
+    {
+      "at_sim_time": 500,
+      "label": "Step 3: CPU overload on frontend (will require approval at S3)",
+      "kind": "cpu_stress",
+      "target": "frontend",
+      "intensity": 0.85,
+      "onset_shape": "linear",
+      "onset_duration": 30,
+      "duration": 300
+    },
+    {
+      "at_sim_time": 900,
+      "label": "Step 4: Bad deployment on payment",
+      "kind": "bad_deploy",
+      "target": "payment",
+      "intensity": 1.0,
+      "onset_shape": "step",
+      "onset_duration": 0,
+      "duration": 300,
+      "metadata": {"new_revision": "v2-bad"}
+    },
+    {
+      "at_sim_time": 1300,
+      "label": "Step 5: Unseen fault — DNS failure on catalog",
+      "kind": "dns_failure",
+      "target": "catalog",
+      "intensity": 0.8,
+      "onset_shape": "sigmoid",
+      "onset_duration": 20,
+      "duration": 300
+    },
+    {
+      "at_sim_time": 1700,
+      "label": "Step 6: Node failure — node-2",
+      "kind": "node_failure",
+      "target": "node-2",
+      "intensity": 1.0,
+      "onset_shape": "step",
+      "onset_duration": 0,
+      "duration": 300
+    },
+    {
+      "at_sim_time": 2100,
+      "label": "Step 7: Kill switch demo — injected mid-incident",
+      "kind": "cpu_stress",
+      "target": "catalog",
+      "intensity": 0.8,
+      "onset_shape": "linear",
+      "onset_duration": 15,
+      "duration": 300
+    },
+    {
+      "at_sim_time": 2500,
+      "label": "Step 8: Compare Lab (triggered from UI, not a fault injection)",
+      "kind": null
+    }
+  ]
+}

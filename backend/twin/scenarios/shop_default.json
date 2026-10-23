@@ -1,0 +1,8 @@
+{
+  "id": "shop_default",
+  "name": "Shop — baseline (no faults)",
+  "description": "Runs the shop cluster with no injected faults. Used to capture healthy baselines.",
+  "seed": 42,
+  "duration_sim_seconds": 600,
+  "faults": []
+}

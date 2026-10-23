@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark operations-centre base */
+:root {
+  color-scheme: dark;
+  --bg: #0f1117;
+  --surface: #111827;
+  --panel: #1f2937;
+  --border: #374151;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --accent: #3b82f6;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --panel: #ffffff;
+  --border: #dbe3ee;
+  --text: #172033;
+  --muted: #526176;
+  --accent: #2563eb;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar — dark ops style */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+:root[data-theme='light'] body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+:root[data-theme='light'] ::-webkit-scrollbar-track { background: #e9eef5; }
+:root[data-theme='light'] ::-webkit-scrollbar-thumb { background: #b8c4d3; }
+:root[data-theme='light'] ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Keep existing page utility classes while swapping their surfaces for light mode. */
+:root[data-theme='light'] [class~='bg-gray-950'],
+:root[data-theme='light'] [class~='bg-gray-900'],
+:root[data-theme='light'] [class~='bg-gray-800'] {
+  background-color: #ffffff !important;
+}
+:root[data-theme='light'] [class~='bg-gray-700'] { background-color: #f1f5f9 !important; }
+:root[data-theme='light'] [class~='bg-gray-600'] { background-color: #e2e8f0 !important; }
+:root[data-theme='light'] [class~='text-gray-100'] { color: #111827 !important; }
+:root[data-theme='light'] [class~='text-gray-200'] { color: #1f2937 !important; }
+:root[data-theme='light'] [class~='text-gray-300'] { color: #334155 !important; }
+:root[data-theme='light'] [class~='text-gray-400'] { color: #475569 !important; }
+:root[data-theme='light'] [class~='text-gray-500'] { color: #64748b !important; }
+:root[data-theme='light'] [class~='text-gray-600'] { color: #64748b !important; }
+:root[data-theme='light'] [class~='border-gray-800'],
+:root[data-theme='light'] [class~='border-gray-700'] { border-color: #e2e8f0 !important; }
+:root[data-theme='light'] [class~='border-gray-600'] { border-color: #cbd5e1 !important; }
+:root[data-theme='light'] [class~='hover:bg-gray-700']:hover { background-color: #e2e8f0 !important; }
+:root[data-theme='light'] [class~='hover:bg-gray-600']:hover { background-color: #cbd5e1 !important; }
+:root[data-theme='light'] [class~='hover:text-gray-100']:hover { color: #111827 !important; }
+
+:root[data-theme='light'] [class~='bg-blue-900'],
+:root[data-theme='light'] [class~='bg-blue-900/20'],
+:root[data-theme='light'] [class~='bg-blue-900/40'] { background-color: #dbeafe !important; }
+:root[data-theme='light'] [class~='bg-purple-900'],
+:root[data-theme='light'] [class~='bg-purple-900/20'],
+:root[data-theme='light'] [class~='bg-purple-900/30'],
+:root[data-theme='light'] [class~='bg-purple-900/40'] { background-color: #f3e8ff !important; }
+:root[data-theme='light'] [class~='bg-teal-900'],
+:root[data-theme='light'] [class~='bg-teal-900/20'],
+:root[data-theme='light'] [class~='bg-teal-900/40'] { background-color: #ccfbf1 !important; }
+:root[data-theme='light'] [class~='bg-cyan-900'],
+:root[data-theme='light'] [class~='bg-cyan-900/40'] { background-color: #cffafe !important; }
+:root[data-theme='light'] [class~='bg-green-900'],
+:root[data-theme='light'] [class~='bg-green-900/20'],
+:root[data-theme='light'] [class~='bg-green-900/40'] { background-color: #dcfce7 !important; }
+:root[data-theme='light'] [class~='bg-amber-900'],
+:root[data-theme='light'] [class~='bg-amber-900/40'] { background-color: #fef3c7 !important; }
+:root[data-theme='light'] [class~='bg-red-900'],
+:root[data-theme='light'] [class~='bg-red-900/20'],
+:root[data-theme='light'] [class~='bg-red-900/30'],
+:root[data-theme='light'] [class~='bg-red-900/40'] { background-color: #fee2e2 !important; }
+:root[data-theme='light'] [class~='text-blue-100'],
+:root[data-theme='light'] [class~='text-blue-200'],
+:root[data-theme='light'] [class~='text-blue-300'],
+:root[data-theme='light'] [class~='text-blue-400'] { color: #1d4ed8 !important; }
+:root[data-theme='light'] [class~='text-purple-100'],
+:root[data-theme='light'] [class~='text-purple-200'],
+:root[data-theme='light'] [class~='text-purple-300'],
+:root[data-theme='light'] [class~='text-purple-400'] { color: #7e22ce !important; }
+:root[data-theme='light'] [class~='text-teal-100'],
+:root[data-theme='light'] [class~='text-teal-200'],
+:root[data-theme='light'] [class~='text-teal-300'],
+:root[data-theme='light'] [class~='text-teal-400'] { color: #0f766e !important; }
+:root[data-theme='light'] [class~='text-cyan-100'],
+:root[data-theme='light'] [class~='text-cyan-200'],
+:root[data-theme='light'] [class~='text-cyan-300'],
+:root[data-theme='light'] [class~='text-cyan-400'] { color: #0e7490 !important; }
+:root[data-theme='light'] [class~='text-green-100'],
+:root[data-theme='light'] [class~='text-green-200'],
+:root[data-theme='light'] [class~='text-green-300'],
+:root[data-theme='light'] [class~='text-green-400'] { color: #15803d !important; }
+:root[data-theme='light'] [class~='text-amber-100'],
+:root[data-theme='light'] [class~='text-amber-200'],
+:root[data-theme='light'] [class~='text-amber-300'],
+:root[data-theme='light'] [class~='text-amber-400'] { color: #b45309 !important; }
+:root[data-theme='light'] [class~='text-red-100'],
+:root[data-theme='light'] [class~='text-red-200'],
+:root[data-theme='light'] [class~='text-red-300'],
+:root[data-theme='light'] [class~='text-red-400'] { color: #b91c1c !important; }
+:root[data-theme='light'] .react-flow { background-color: #f8fafc; }
+:root[data-theme='light'] .react-flow__background pattern circle { fill: #cbd5e1; }
